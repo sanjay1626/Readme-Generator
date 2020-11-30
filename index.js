@@ -1,12 +1,22 @@
+//external modules
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generatereadme = require('./generatereadme');
+const util = require('./utils');
+//my modules
+const generatereadme = require('./utils/generateReadme.js');
+const api = require('./utils/api.js')
 
 // array of questions for user
 const questions = [
     {    type: 'input',
          message : "What is the Title of the project?",
-         name : "title"
+         name : "title",
+         validate: function (answer) {
+                if (answer.length < 1) {
+                    return console.log("A valid project title is required.");
+                }
+                return true;
+            }
     },
         
     
