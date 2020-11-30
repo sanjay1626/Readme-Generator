@@ -1,5 +1,6 @@
 function generateMarkdown(data) {
-    return `# ${data.title}, # ${data.description}
+    return `# ${data.title}, 
+          
   
   `;
   }
