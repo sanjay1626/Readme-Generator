@@ -3,7 +3,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const util = require('util');
 //my modules
-const generatereadme = require('./utils/generateReadme.js');
+const generateMarkdown = require('./utils/generatMarkdown.js');
 const api = require('./utils/api.js')
 
 // array of questions for user
@@ -58,7 +58,7 @@ const questions = [
         type: 'input',
         message: "What is your GitHub username? (No @ needed)",
         name: 'username',
-        default: 'connietran-dev',
+        
         validate: function (answer) {
             if (answer.length < 1) {
                 return console.log("A valid GitHub username is required.");
@@ -86,14 +86,19 @@ const questions = [
 // function to write README file
 function writeToFile(fileName, data) {
 
-        fs.writeFile(fileName,data), (err) => 
-        err ? console.error(err) : console.log("Success! README.md generated")
+        fs.writeFile(fileName, data, err => {
+                if (err) {
+                  return console.log(err);
+                }
+              
+                console.log("Success! Your README.md file has been generated")
+            });
 }
 
-
-//promisify writefile 
-const writeFileAsync = util.promisify(writeToFile);
 // function to initialize program
+//promisify writefile function
+const writeFileAsync = util.promisify(writeToFile);
+
 async function init() {
         try {
     
@@ -118,7 +123,6 @@ async function init() {
             console.log(error);
         }
     };
-            
 
 
 // function call to initialize program
