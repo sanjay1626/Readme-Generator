@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README.md Generator: Node.js and ES6+
 
 ## Description 
@@ -63,3 +64,9 @@ If you utilize this app to generate a README for your project, I'd love to see. 
 GitHub: [@connietran-dev](https://api.github.com/users/connietran-dev)
 
 Email: connietrandev@gmail.com
+=======
+# Readme-Generator
+
+   
+    
+>>>>>>> ff42edbc690349b35da12d92fb9c22f4d3dee66d
