@@ -1,18 +1,18 @@
 function generateMarkdown(userResponses, userInfo) {
 
   // Generate Table of Contents conditionally based on userResponses
-  let draftToC = `## Table of Contents`;
+  let tableofcontents = `## Table of Contents`;
 
-  if (userResponses.installation !== '') { draftToC += `
+  if (userResponses.installation !== '') { tableofcontents += `
   * [Installation](#installation)` };
 
-  if (userResponses.usage !== '') { draftToC += `
+  if (userResponses.usage !== '') { tableofcontents += `
   * [Usage](#usage)` };
 
-  if (userResponses.contributing !== '') { draftToC += `
+  if (userResponses.contributing !== '') { tableofcontents += `
   * [Contributing](#contributing)` };
 
-  if (userResponses.tests !== '') { draftToC += `
+  if (userResponses.tests !== '') { tableofcontents += `
   * [Tests](#tests)` };
 
 
@@ -27,14 +27,13 @@ function generateMarkdown(userResponses, userInfo) {
   
   ## Description 
   
-  *The what, why, and how:* 
   
   ${userResponses.description}
 
   `
 
   // Add Table of Contents to markdown
-  draftMarkdown += draftToC;
+  draftMarkdown += tableofcontents;
  
   // Add License section since License is required to Table of Contents
   draftMarkdown += `

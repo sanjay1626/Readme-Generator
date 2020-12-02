@@ -11,30 +11,6 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = [
     {
         type: 'input',
-        message: "What is your GitHub username? (No @ needed)",
-        name: 'username',
-        default: 'sanjay1626',
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return console.log("A valid GitHub username is required.");
-            }
-            return true;
-        }
-    },
-    {
-        type: 'input',
-        message: "What is the name of your GitHub repo?",
-        name: 'repo',
-        default: 'readme-generator',
-        validate: function (answer) {
-            if (answer.length < 1) {
-                return console.log("A valid GitHub repo is required for a badge.");
-            }
-            return true;
-        }
-    },
-    {
-        type: 'input',
         message: "What is the title of your project?",
         name: 'title',
         default: 'Project Title',
@@ -59,7 +35,33 @@ const questions = [
     },
     {
         type: 'input',
-        message: "If applicable, describe the steps required to install your project for the Installation section.",
+        message: "What is your GitHub username? (No @ needed)",
+        name: 'username',
+        default: 'sanjay1626',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid GitHub username is required.");
+            }
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        message: "What is the name of your GitHub repo?",
+        name: 'repo',
+        default: 'readme-generator',
+        validate: function (answer) {
+            if (answer.length < 1) {
+                return console.log("A valid GitHub repo is required for a badge.");
+            }
+            return true;
+        }
+    },
+   
+  
+    {
+        type: 'input',
+        message: "Optional, describe the steps required to install your project for the Installation section.",
         name: 'installation'
     },
     {
@@ -69,17 +71,18 @@ const questions = [
     },
     {
         type: 'input',
-        message: "If applicable, provide guidelines on how other developers can contribute to your project.",
+        message: "Optional, provide guidelines on how other developers can contribute to your project.",
         name: 'contributing'
     },
     {
         type: 'input',
-        message: "If applicable, provide any tests written for your application and provide examples on how to run them.",
+        message: "Optional, provide any tests written for your application and provide examples on how to run them.",
         name: 'tests'
     },
+    
     {
         type: 'list',
-        message: "Choose a license for your project.",
+        message: "Choose a license.",
         choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense'],
         name: 'license'
     }
@@ -91,7 +94,7 @@ function writeToFile(fileName, data) {
           return console.log(err);
         }
       
-        console.log("Success! Your README.md file has been generated")
+        console.log("Success! README.md file has been generated")
     });
 }
 
@@ -109,15 +112,15 @@ async function init() {
     
         // Call GitHub api for user info
         const userInfo = await api.getUser(userResponses);
-        console.log("Your GitHub user info: ", userInfo);
+        console.log("GitHub user info: ", userInfo);
     
         // Pass Inquirer userResponses and GitHub userInfo to generateMarkdown
-        console.log("Generating your README next...")
+        console.log("Generating README...")
         const markdown = generateMarkdown(userResponses, userInfo);
         console.log(markdown);
     
         // Write markdown to file
-        await writeFileAsync('ExampleREADME.md', markdown);
+        await writeFileAsync('AddedREADME.md', markdown);
 
     } catch (error) {
         console.log(error);
