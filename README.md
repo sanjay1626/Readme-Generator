@@ -29,7 +29,7 @@ The application itself can be invoked with `node index.js`.
 ## Usage 
 
 
-![Gif demo of README-generator](readme-demo.gif)
+![Gif demo of README-generator](https://media.giphy.com/media/CYoCyVaAouL7bzf4Xo/giphy.gif)
 
 When you run `node index.js`, the application uses the `inquirer` package to prompt you in the command line with a series of questions about your GitHub and about your project then takes your responses and uses `axios` to fetch your GitHub profile from the [GitHub API](https://developer.github.com/v3/), including your GitHub profile picture (avatar) and email if updated on GitHub account.
 

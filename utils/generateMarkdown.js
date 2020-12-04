@@ -31,7 +31,6 @@ function generateMarkdown(userResponses, userInfo) {
   ${userResponses.description}
 
   `
-
   // Add Table of Contents to markdown
   draftMarkdown += tableofcontents;
  
